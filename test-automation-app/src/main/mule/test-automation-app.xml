@@ -17,7 +17,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 output application/json
 ---
 {
-	'message' : 'Hello, welcome to the jenkins automate job.'
+	'message' : 'Hello, welcome to the first jenkins automate job.'
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
