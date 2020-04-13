@@ -16,8 +16,7 @@ pipeline
     }
     stage('Perform Regression Testing'){
       steps{
-        bat 'cd C:\\Users\\uday\\AppData\\Roaming\\npm'
-        bat 'newman run E:\\TestTools\\postman\\WorldTimeZone.postman_collection.json --disable-unicode'
+        bat 'C:\\Users\\uday\\AppData\\Roaming\\npm\\newman run E:\\TestTools\\postman\\WorldTimeZone.postman_collection.json --disable-unicode'
       }
     }    
   }	
