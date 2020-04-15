@@ -5,6 +5,7 @@ pipeline
     
     stage('Build Application'){
       steps{
+        bat 'cd world-timezone-api'
         bat 'mvn clean install'
       }
     }
