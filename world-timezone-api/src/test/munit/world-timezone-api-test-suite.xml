@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="world-timezone-api-test-suite.xml" />
+	<sub-flow name="world-timezone-api-test-suiteSub_Flow" doc:id="689487f3-5f1b-42a5-98e7-b9bbba08c955" >
+		<munit:set-event doc:name="Set Event" doc:id="cef6cbe4-fab5-48a5-bd40-db22193eb35f" >
+			<munit:attributes value="#[{uriParams:{region:'Asia',city:'Kolkata'}}]" />
+		</munit:set-event>
+	</sub-flow>
+	<munit:test name="world-timezone-api-test-suite-world-timezone-apiFlowTest" doc:id="f2b84029-f4ae-4f84-9ec3-39ff866af31a" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="84647367-0a8e-4c53-8f7a-80d965920e29" name="world-timezone-api-test-suiteSub_Flow"/>
+			<flow-ref doc:name="Flow-ref to world-timezone-apiFlow" doc:id="a02a8700-8685-4bf9-b7ed-5183ad7b1ed1" name="world-timezone-apiFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="7a5bb549-7564-47e4-91d3-9b91928cdd6e" message="Wold timezonce resonse message is null." expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="world-timezone-api-test-suite-world-timezone-apiFlowTest1" doc:id="e4491fac-e6ae-4022-8ca5-f7251c9d13a9" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="d00fc026-c063-4d47-81e0-245ef5818921" name="world-timezone-api-test-suiteSub_Flow"/>
+			<flow-ref doc:name="Flow-ref to world-timezone-apiFlow" doc:id="aea0f974-5389-4445-a1aa-bd5ef7f33fea" name="world-timezone-apiFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="7dc598d7-675e-45d6-94e7-3060c44d942a" is="#[MunitTools::withMediaType('application/json')]" expression="#[payload]" message="returned message is of incorrect media type."/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="world-timezone-api-test-suite-world-timezone-apiFlowTest2" doc:id="7863fe07-b4bd-47a8-bd15-8a37cdd10b70" description="Test">
+		<munit:execution>
+			<flow-ref doc:name="Flow Reference" doc:id="6c7eb1e1-92c5-4e9e-a062-e2b4d7b6e330" name="world-timezone-api-test-suiteSub_Flow" />
+			<flow-ref doc:name="Flow-ref to world-timezone-apiFlow" doc:id="5b5349d5-59f5-464b-836b-81ef8d1a92cc" name="world-timezone-apiFlow" />
+		</munit:execution>
+		<munit:validation>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="95006cf9-13fa-4a8e-bd4f-8853937ade3d" is="#[MunitTools::equalTo(false)]" expression="#[payload.dst]" message="DST value is incorrect." />
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

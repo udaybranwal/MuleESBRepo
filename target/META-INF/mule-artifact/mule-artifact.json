@@ -1,0 +1,22 @@
+{
+  "configs": [
+    "world-demo-app.xml"
+  ],
+  "secureProperties": [],
+  "redeploymentEnabled": true,
+  "name": "world-demo-app",
+  "minMuleVersion": "4.1.2",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": [
+        "log4j2.xml"
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
