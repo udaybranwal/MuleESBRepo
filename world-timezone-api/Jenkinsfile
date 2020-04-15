@@ -5,20 +5,19 @@ pipeline
     
     stage('Build Application'){
       steps{
-        bat 'cd world-timezone-api'
-        bat 'mvn clean install'
+        bat 'cd world-timezone-api & mvn clean install'
       }
     }
     
     stage('Unit Test Application'){
       steps{
-        bat 'mvn clean test'
+        bat 'cd world-timezone-api & mvn clean test'
       }
     }
 
     stage('Deploy Application To Mulesoft CloudHub'){
       steps{
-        bat 'mvn package deploy -DmuleDeploy'
+        bat 'cd world-timezone-api & mvn package deploy -DmuleDeploy'
       }
     }
     stage('Perform Regression Testing'){
