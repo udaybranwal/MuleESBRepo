@@ -33,6 +33,7 @@
 					<applicationName>world-timezone-api</applicationName>
 					<workers>1</workers>
 					<workerType>Micro</workerType>
+					<objectStoreV2>true</objectStoreV2>
 					<muleVersion>4.2.2</muleVersion>
 				  </cloudHubDeployment>
 				</configuration>
